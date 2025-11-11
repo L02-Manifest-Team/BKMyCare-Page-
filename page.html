@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BKMyCare — Kết nối bác sĩ tư vấn tâm lý trực tiếp</title>
+  <meta name="description" content="BKMyCare — Nền tảng kết nối bạn với bác sĩ, chuyên gia tư vấn tâm lý để nhận hỗ trợ trực tiếp, an toàn và bảo mật." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#5B8DEF;--muted:#6b7280;--bg:#f7f9fc;--card:#ffffff}
+    *{box-sizing:border-box;font-family:'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7cc6ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:600}
+    .hero{display:flex;gap:32px;align-items:center;padding:36px 0}
+    .hero-left{flex:1}
+    h1{font-size:28px;margin:0 0 12px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .cta{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+    .secondary{display:inline-block;margin-left:12px;padding:10px 14px;border-radius:10px;background:#fff;border:1px solid #e6eefc;color:var(--accent);text-decoration:none;font-weight:700}
+    .stats{display:flex;gap:18px;margin-top:20px}
+    .stat{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(12,20,40,0.05);min-width:120px;text-align:center}
+    .hero-right{flex:1}
+    .mock{background:linear-gradient(180deg,#ffffff,rgba(91,141,239,0.06));padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px}
+    section.features{margin-top:26px}
+    .steps{display:flex;gap:14px;flex-wrap:wrap}
+    .step{flex:1;min-width:200px;background:var(--card);padding:16px;border-radius:12px}
+    .doctors{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+    .doctor{background:var(--card);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#f3f6ff,#e9f2ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    footer{margin-top:36px;padding:28px 0;color:var(--muted);font-size:13px}
+    @media (max-width:760px){h1{font-size:22px}.hero{flex-direction:column}.stats{flex-direction:row;overflow:auto}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">BK</div>
+        <div>
+          <div style="font-weight:700">BKMyCare</div>
+          <div style="font-size:12px;color:var(--muted)">Kết nối tư vấn tâm lý trực tiếp</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Tính năng</a>
+        <a href="#doctors">Bác sĩ</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <h1>BKMyCare — Nền tảng kết nối bạn với bác sĩ tư vấn tâm lý trực tiếp</h1>
+          <p class="lead">Tìm chuyên gia phù hợp, đặt lịch hẹn an toàn và trò chuyện qua video hoặc chat — nhanh, kín đáo, được hỗ trợ bởi đội ngũ chuyên nghiệp.</p>
+
+          <a class="cta" href="#contact">Bắt đầu tư vấn</a>
+          <a class="secondary" href="#doctors">Xem bác sĩ</a>
+
+          <div class="stats" aria-hidden>
+            <div class="stat"><div style="font-size:18px;font-weight:700">+300</div><div style="font-size:12px;color:var(--muted)">Bác sĩ & chuyên gia</div></div>
+            <div class="stat"><div style="font-size:18px;font-weight:700">4.8/5</div><div style="font-size:12px;color:var(--muted)">Đánh giá trung bình</div></div>
+            <div class="stat"><div style="font-size:18px;font-weight:700">Bảo mật</div><div style="font-size:12px;color:var(--muted)">HTTPS & mã hóa</div></div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="mock">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="font-weight:700">Phiên tư vấn</div>
+              <div style="font-size:12px;color:var(--muted)">Đang hoạt động</div>
+            </div>
+
+            <div class="cards">
+              <div class="card">
+                <div style="font-weight:700">Dr. Lan — Chuyên gia CBT</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:6px">Khám phá kỹ thuật quản lý căng thẳng</div>
+              </div>
+              <div class="card">
+                <div style="font-weight:700">Dr. Huy — Tâm lý lâm sàng</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:6px">Hỗ trợ trầm cảm & lo âu</div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;font-size:13px;color:var(--muted)">Demo giao diện phiên video • Chat • Ghi chú</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <h2 style="margin:16px 0">Tính năng nổi bật</h2>
+        <div class="steps">
+          <div class="step">
+            <strong>Kết nối trực tiếp</strong>
+            <div style="color:var(--muted);margin-top:8px;font-size:14px">Video call & chat thời gian thực với bác sĩ được chứng nhận.</div>
+          </div>
+          <div class="step">
+            <strong>Đặt lịch & nhắc lịch</strong>
+            <div style="color:var(--muted);margin-top:8px;font-size:14px">Lên lịch theo ngày/ca, nhận thông báo nhắc hẹn.</div>
+          </div>
+          <div class="step">
+            <strong>Bảo mật & ẩn danh</strong>
+            <div style="color:var(--muted);margin-top:8px;font-size:14px">Dữ liệu mã hóa, tùy chọn ẩn danh cho bệnh nhân.</div>
+          </div>
+          <div class="step">
+            <strong>Hệ thống đánh giá</strong>
+            <div style="color:var(--muted);margin-top:8px;font-size:14px">Đánh giá bác sĩ sau mỗi phiên để đảm bảo chất lượng dịch vụ.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" style="margin-top:22px">
+        <h2 style="margin:12px 0">Cách hoạt động</h2>
+        <ol style="color:var(--muted)">
+          <li>Đăng ký / đăng nhập → Tìm bác sĩ theo chuyên môn.</li>
+          <li>Đặt lịch → Thanh toán (nếu cần) → Nhận link phiên.</li>
+          <li>Tham gia phiên qua video hoặc chat → Ghi chú & nhận tài liệu hỗ trợ.</li>
+        </ol>
+      </section>
+
+      <section id="doctors" style="margin-top:22px">
+        <h2 style="margin:12px 0">Một số bác sĩ</h2>
+        <div class="doctors">
+          <div class="doctor">
+            <div class="avatar">LN</div>
+            <div>
+              <div style="font-weight:700">Dr. Lê Ngọc — Tâm lý học lâm sàng</div>
+              <div style="font-size:13px;color:var(--muted)">Chuyên về CBT, lo âu, trầm cảm — 10 năm kinh nghiệm</div>
+            </div>
+          </div>
+
+          <div class="doctor">
+            <div class="avatar">TH</div>
+            <div>
+              <div style="font-weight:700">Dr. Trần Hạnh — Tư vấn gia đình</div>
+              <div style="font-size:13px;color:var(--muted)">Hỗ trợ mâu thuẫn gia đình, lắng nghe chủ động</div>
+            </div>
+          </div>
+
+          <div class="doctor">
+            <div class="avatar">HP</div>
+            <div>
+              <div style="font-weight:700">Dr. Hồ Phúc — Trị liệu trẻ em</div>
+              <div style="font-size:13px;color:var(--muted)">Tư vấn cho trẻ & phụ huynh, phát triển kỹ năng</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:28px">
+        <h2 style="margin:12px 0">Liên hệ & Bắt đầu</h2>
+        <p style="color:var(--muted)">Gửi thông tin để đặt thử phiên tư vấn miễn phí 15 phút hoặc liên hệ hợp tác.</p>
+
+        <form onsubmit="event.preventDefault();alert('Form demo — kết nối backend để xử lý.');" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+          <input placeholder="Họ tên" required style="flex:1;min-width:220px;padding:10px;border-radius:8px;border:1px solid #e6eefc" />
+          <input placeholder="Email" required style="flex:1;min-width:220px;padding:10px;border-radius:8px;border:1px solid #e6eefc" />
+          <input placeholder="Số điện thoại (tùy chọn)" style="flex:1;min-width:220px;padding:10px;border-radius:8px;border:1px solid #e6eefc" />
+          <textarea placeholder="Lời nhắn ngắn" style="flex-basis:100%;padding:10px;border-radius:8px;border:1px solid #e6eefc" rows="4"></textarea>
+          <button class="cta" style="border:none">Gửi</button>
+        </form>
+
+        <p style="font-size:12px;color:var(--muted);margin-top:10px">Lưu ý: Đây là mẫu landing page tĩnh. Để hoạt động đầy đủ cần tích hợp backend (auth, scheduling, video call, thanh toán, lưu trữ an toàn).</p>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>© BKMyCare — 2025. Bảo mật & quyền riêng tư được tôn trọng.</div>
+        <div style="color:var(--muted)">Địa chỉ liên hệ: info@bkmycare.example</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
