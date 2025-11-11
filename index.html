@@ -3,186 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BKMineCare — Kết nối bác sĩ tư vấn tâm lý trực tiếp</title>
-  <meta name="description" content="BKMyCare — Nền tảng kết nối bạn với bác sĩ, chuyên gia tư vấn tâm lý để nhận hỗ trợ trực tiếp, an toàn và bảo mật." />
+  <title>BKMindCare — Hỗ trợ tâm lý cho sinh viên Bách Khoa</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#5B8DEF;--muted:#6b7280;--bg:#f7f9fc;--card:#ffffff}
-    *{box-sizing:border-box;font-family:'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
-    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
-    .container{max-width:1100px;margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7cc6ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:600}
-    .hero{display:flex;gap:32px;align-items:center;padding:36px 0}
-    .hero-left{flex:1}
-    h1{font-size:28px;margin:0 0 12px}
-    p.lead{color:var(--muted);margin:0 0 18px}
-    .cta{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
-    .secondary{display:inline-block;margin-left:12px;padding:10px 14px;border-radius:10px;background:#fff;border:1px solid #e6eefc;color:var(--accent);text-decoration:none;font-weight:700}
-    .stats{display:flex;gap:18px;margin-top:20px}
-    .stat{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(12,20,40,0.05);min-width:120px;text-align:center}
-    .hero-right{flex:1}
-    .mock{background:linear-gradient(180deg,#ffffff,rgba(91,141,239,0.06));padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-    .card{background:var(--card);padding:14px;border-radius:12px}
-    section.features{margin-top:26px}
-    .steps{display:flex;gap:14px;flex-wrap:wrap}
-    .step{flex:1;min-width:200px;background:var(--card);padding:16px;border-radius:12px}
-    .doctors{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
-    .doctor{background:var(--card);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center}
-    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#f3f6ff,#e9f2ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
-    footer{margin-top:36px;padding:28px 0;color:var(--muted);font-size:13px}
-    @media (max-width:760px){h1{font-size:22px}.hero{flex-direction:column}.stats{flex-direction:row;overflow:auto}}
+    :root{--accent:#4B7BFF;--dark:#0f172a;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,Segoe UI,Roboto}
+    body{background:var(--bg);color:var(--dark);line-height:1.55;overflow-x:hidden}
+
+    header{position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);padding:18px 8%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5eaf4;z-index:10}
+    nav a{text-decoration:none;margin-left:24px;font-weight:600;color:var(--muted);transition:0.25s}
+    nav a:hover{color:var(--accent)}
+
+    .hero{padding:80px 8%;display:flex;flex-wrap:wrap;align-items:center;gap:60px}
+    .hero h1{font-size:40px;font-weight:700;line-height:1.25;margin-bottom:16px}
+    .hero p{max-width:520px;color:var(--muted);margin-bottom:28px}
+
+    .cta{display:inline-block;background:var(--accent);color:#fff;padding:14px 22px;border-radius:12px;font-weight:600;text-decoration:none;transition:0.3s}
+    .cta:hover{opacity:0.9;transform:translateY(-1px)}
+
+    .secondary{display:inline-block;margin-left:12px;padding:14px 18px;border-radius:12px;border:1px solid var(--accent);color:var(--accent);font-weight:600;text-decoration:none;transition:0.3s}
+    .secondary:hover{background:var(--accent);color:#fff}
+
+    .section{padding:100px 8%}
+    .section h2{text-align:center;font-size:32px;font-weight:700;margin-bottom:48px}
+
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+    .feature-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,0.06);transition:0.35s}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(15,23,42,0.1)}
+    .feature-card strong{font-size:18px;display:block;margin-bottom:8px}
+    .feature-card p{color:var(--muted);font-size:14px}
+
+    footer{padding:32px 8%;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid #e9edf5;margin-top:60px}
+
+    @media(max-width:800px){.hero h1{font-size:30px}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">BK</div>
-        <div>
-          <div style="font-weight:700">BKMineCare</div>
-          <div style="font-size:12px;color:var(--muted)">Kết nối tư vấn tâm lý trực tiếp</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#features">Tính năng</a>
-        <a href="#doctors">Bác sĩ</a>
-        <a href="#contact">Liên hệ</a>
-      </nav>
-    </header>
+<header>
+  <div style="display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--accent)">BKMindCare</div>
+  <nav>
+    <a href="#features">Tính năng</a>
+    <a href="#mvp">Lợi ích</a>
+    <a href="#contact">Thông tin</a>
+  </nav>
+</header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-left">
-          <h1>BKMyCare — DÀNH RIÊNG CHO SINH VIÊN BÁCH KHOA HCM</h1>
-          <p class="lead">Tìm chuyên gia phù hợp, đặt lịch hẹn an toàn và trò chuyện qua video hoặc chat — nhanh, kín đáo, được hỗ trợ bởi đội ngũ chuyên nghiệp.</p>
-
-          <a class="cta" href="#contact">Bắt đầu tư vấn</a>
-          <a class="secondary" href="#doctors">Xem bác sĩ</a>
-
-          <div class="stats" aria-hidden>
-            <div class="stat"><div style="font-size:18px;font-weight:700">+300</div><div style="font-size:12px;color:var(--muted)">Bác sĩ & chuyên gia</div></div>
-            <div class="stat"><div style="font-size:18px;font-weight:700">4.8/5</div><div style="font-size:12px;color:var(--muted)">Đánh giá trung bình</div></div>
-            <div class="stat"><div style="font-size:18px;font-weight:700">Bảo mật</div><div style="font-size:12px;color:var(--muted)">HTTPS & mã hóa</div></div>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="mock">
-            <div style="display:flex;align-items:center;justify-content:space-between">
-              <div style="font-weight:700">Phiên tư vấn</div>
-              <div style="font-size:12px;color:var(--muted)">Đang hoạt động</div>
-            </div>
-
-            <div class="cards">
-              <div class="card">
-                <div style="font-weight:700">Dr. Lan — Chuyên gia CBT</div>
-                <div style="font-size:13px;color:var(--muted);margin-top:6px">Khám phá kỹ thuật quản lý căng thẳng</div>
-              </div>
-              <div class="card">
-                <div style="font-weight:700">Dr. Huy — Tâm lý lâm sàng</div>
-                <div style="font-size:13px;color:var(--muted);margin-top:6px">Hỗ trợ trầm cảm & lo âu</div>
-              </div>
-            </div>
-
-            <div style="margin-top:12px;font-size:13px;color:var(--muted)">Demo giao diện phiên video • Chat • Ghi chú</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="features" class="features">
-        <h2 style="margin:16px 0">Tính năng nổi bật</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px">
-          <div class="card">
-            <strong style="font-size:17px;display:block;margin-bottom:6px">Phiên tư vấn Video HD</strong>
-            <p style="color:var(--muted);font-size:14px;margin:0">Trò chuyện trực tiếp với bác sĩ thông qua video chất lượng cao, âm thanh rõ ràng.</p>
-          </div>
-          <div class="card">
-            <strong style="font-size:17px;display:block;margin-bottom:6px">Chat bảo mật & ghi chú</strong>
-            <p style="color:var(--muted);font-size:14px;margin:0">Tin nhắn và thông tin được mã hóa, hỗ trợ ghi chú trong phiên.</p>
-          </div>
-          <div class="card">
-            <strong style="font-size:17px;display:block;margin-bottom:6px">Lọc bác sĩ theo chuyên môn</strong>
-            <p style="color:var(--muted);font-size:14px;margin:0">Chọn bác sĩ theo kinh nghiệm, lĩnh vực và đánh giá thực tế.</p>
-          </div>
-          <div class="card">
-            <strong style="font-size:17px;display:block;margin-bottom:6px">Đặt lịch thông minh</strong>
-            <p style="color:var(--muted);font-size:14px;margin:0">Xem lịch trống theo ca, chọn thời gian phù hợp và nhận nhắc lịch tự động.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="how" style="margin-top:22px">
-        <h2 style="margin:12px 0">Cách hoạt động</h2>
-        <ol style="color:var(--muted)">
-          <li>Đăng ký / đăng nhập → Tìm bác sĩ theo chuyên môn.</li>
-          <li>Đặt lịch → Thanh toán (nếu cần) → Nhận link phiên.</li>
-          <li>Tham gia phiên qua video hoặc chat → Ghi chú & nhận tài liệu hỗ trợ.</li>
-        </ol>
-      </section>
-
-      <section id="doctors" style="margin-top:22px">
-        <h2 style="margin:12px 0">Một số bác sĩ</h2>
-        <div class="doctors">
-          <div class="doctor">
-            <div class="avatar">LN</div>
-            <div>
-              <div style="font-weight:700">Dr. Lê Ngọc — Tâm lý học lâm sàng</div>
-              <div style="font-size:13px;color:var(--muted)">Chuyên về CBT, lo âu, trầm cảm — 10 năm kinh nghiệm</div>
-            </div>
-          </div>
-
-          <div class="doctor">
-            <div class="avatar">TH</div>
-            <div>
-              <div style="font-weight:700">Dr. Trần Hạnh — Tư vấn gia đình</div>
-              <div style="font-size:13px;color:var(--muted)">Hỗ trợ mâu thuẫn gia đình, lắng nghe chủ động</div>
-            </div>
-          </div>
-
-          <div class="doctor">
-            <div class="avatar">HP</div>
-            <div>
-              <div style="font-weight:700">Dr. Hồ Phúc — Trị liệu trẻ em</div>
-              <div style="font-size:13px;color:var(--muted)">Tư vấn cho trẻ & phụ huynh, phát triển kỹ năng</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-
-    </main>
-
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
-        <div>© BKMyCare — 2025. Bảo mật & quyền riêng tư được tôn trọng.</div>
-        <div style="color:var(--muted)">Địa chỉ liên hệ: info@bkmycare.example</div>
-      </div>
-    </footer>
+<section class="hero">
+  <div>
+    <h1>Bạn không một mình — Chúng tôi lắng nghe bạn.</h1>
+    <p>BKMindCare là nền tảng hỗ trợ tâm lý <b>dành riêng cho sinh viên Đại học Bách Khoa TP.HCM</b>, giúp bạn chia sẻ cảm xúc, tìm chuyên gia phù hợp và đồng hành trên hành trình chữa lành.</p>
+    <a class="cta" href="#features">Khám phá ngay</a>
+    <a class="secondary" href="#mvp">Tại sao chọn chúng tôi?</a>
   </div>
-<section class="px-8 py-24 space-y-24">
-  <div class="space-y-4 text-center">
-    <h2 class="text-4xl font-bold">Tính năng cốt lõi</h2>
-    <p class="text-gray-600 max-w-2xl mx-auto">BKMyCare dành riêng cho sinh viên Đại học Bách Khoa TP.HCM — nơi bạn được lắng nghe và đồng hành.</p>
-  </div>
-  <div class="space-y-24">
-    <div class="space-y-4 max-w-3xl mx-auto">
-      <h3 class="text-3xl font-bold">💬 Chat ẩn danh với chuyên gia</h3>
-      <p>Trò chuyện ẩn danh giúp bạn chia sẻ cảm xúc trong một không gian an toàn, không phán xét.</p>
+</section>
+
+<section id="features" class="section">
+  <h2>Tính năng cốt lõi</h2>
+  <div class="grid-3">
+    <div class="feature-card">
+      <strong>💬 Chat ẩn danh với chuyên gia</strong>
+      <p>Trò chuyện kín đáo, không phán xét — an toàn để mở lòng.</p>
     </div>
-    <div class="space-y-4 max-w-3xl mx-auto">
-      <h3 class="text-3xl font-bold">🗓️ Đặt lịch tư vấn chuyên sâu</h3>
-      <p>Chuyển từ trò chuyện nhanh sang tư vấn có lộ trình cùng các chuyên gia tâm lý.</p>
+    <div class="feature-card">
+      <strong>🗓️ Đặt lịch tư vấn</strong>
+      <p>Chọn chuyên gia phù hợp và đặt lịch video hoặc gặp trực tiếp.</p>
     </div>
-    <div class="space-y-4 max-w-3xl mx-auto">
-      <h3 class="text-3xl font-bold">📆 Check-in cảm xúc hằng ngày</h3>
-      <p>Theo dõi cảm xúc mỗi ngày để hiểu rõ bản thân hơn và hỗ trợ chuyên viên trong tư vấn.</p>
+    <div class="feature-card">
+      <strong>📆 Check-in cảm xúc mỗi ngày</strong>
+      <p>Ghi lại cảm xúc, theo dõi quá trình và nhận gợi ý chăm sóc tâm lý.</p>
     </div>
   </div>
 </section>
+
+<footer>
+  © 2025 BKMindCare — Sinh viên Bách Khoa đồng hành cùng nhau.
+</footer>
 </body>
 </html>
