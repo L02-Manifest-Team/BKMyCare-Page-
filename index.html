@@ -1,82 +1,1228 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BKMindCare — Hỗ trợ tâm lý cho sinh viên Bách Khoa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--accent:#4B7BFF;--dark:#0f172a;--muted:#6b7280;--bg:#f8fafc;--card:#ffffff}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,Segoe UI,Roboto}
-    body{background:var(--bg);color:var(--dark);line-height:1.55;overflow-x:hidden}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKMindCare — Hỗ trợ tâm lý cho sinh viên Bách Khoa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary: #4A90E2;
+            --primary-light: #A2D9CE;
+            --secondary: #7B68EE;
+            --secondary-light: #E8E3FF;
+            
+            /* Status Colors */
+            --success: #4CAF50;
+            --success-light: #E8F5E9;
+            --warning: #FFC107;
+            --error: #F44336;
+            
+            /* Background Colors */
+            --background: #FFFFFF;
+            --background-light: #F5F5F5;
+            --light: #F5F5F5;
+            
+            /* Text Colors */
+            --dark: #212121;
+            --text: #212121;
+            --text-secondary: #757575;
+            --text-light: #9E9E9E;
+            --muted: #757575;
+            --muted-light: #E0E0E0;
+            
+            /* UI Colors */
+            --white: #FFFFFF;
+            --border: #E0E0E0;
+            
+            /* Additional Colors */
+            --purple: #9C27B0;
+            --purple-light: #F3E5F5;
+            --green: #66BB6A;
+            --green-light: #E8F5E9;
+            --light-green: #C8E6C9;
+            --teal: #26A69A;
+            --teal-light: #B2DFDB;
+            --blue: #42A5F5;
+            --blue-light: #E3F2FD;
+            --pink: #EC407A;
+            --pink-light: #FCE4EC;
+            --yellow: #FFD54F;
+            --orange: #FF9800;
+            --orange-light: #FFE0B2;
+            
+            /* UI Elements */
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
 
-    header{position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);padding:18px 8%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5eaf4;z-index:10}
-    nav a{text-decoration:none;margin-left:24px;font-weight:600;color:var(--muted);transition:0.25s}
-    nav a:hover{color:var(--accent)}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .hero{padding:80px 8%;display:flex;flex-wrap:wrap;align-items:center;gap:60px}
-    .hero h1{font-size:40px;font-weight:700;line-height:1.25;margin-bottom:16px}
-    .hero p{max-width:520px;color:var(--muted);margin-bottom:28px}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
 
-    .cta{display:inline-block;background:var(--accent);color:#fff;padding:14px 22px;border-radius:12px;font-weight:600;text-decoration:none;transition:0.3s}
-    .cta:hover{opacity:0.9;transform:translateY(-1px)}
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .secondary{display:inline-block;margin-left:12px;padding:14px 18px;border-radius:12px;border:1px solid var(--accent);color:var(--accent);font-weight:600;text-decoration:none;transition:0.3s}
-    .secondary:hover{background:var(--accent);color:#fff}
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
 
-    .section{padding:100px 8%}
-    .section h2{text-align:center;font-size:32px;font-weight:700;margin-bottom:48px}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
-    .feature-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,0.06);transition:0.35s}
-    .feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(15,23,42,0.1)}
-    .feature-card strong{font-size:18px;display:block;margin-bottom:8px}
-    .feature-card p{color:var(--muted);font-size:14px}
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
 
-    footer{padding:32px 8%;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid #e9edf5;margin-top:60px}
+        .logo-img {
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            vertical-align: middle;
+        }
 
-    @media(max-width:800px){.hero h1{font-size:30px}}
-  </style>
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(75, 123, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #3a6beb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(75, 123, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .feature-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .feature-link:hover {
+            color: #3a6beb;
+        }
+
+        .feature-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: #f8faff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSg3NSwgMTIzLCAyNTUsIDAuMDMpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+') repeat;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .steps-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 25px;
+            box-shadow: 0 4px 10px rgba(75, 123, 255, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--muted-light);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--dark);
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid var(--primary-light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4B7BFF 0%, #3a6beb 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 20px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            box-shadow: 0 20px 40px rgba(75, 123, 255, 0.3);
+        }
+
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDQwIDQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIHNjYWxlKDEpIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-cta-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-cta-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            vertical-align: middle;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-bottom: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero p {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                margin: 5px 0;
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section {
+                margin: 50px 20px;
+                padding: 60px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-cta, .btn-cta-outline {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+    </style>
 </head>
 <body>
-<header>
-  <div style="display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--accent)">BKMindCare</div>
-  <nav>
-    <a href="#features">Tính năng</a>
-    <a href="#mvp">Lợi ích</a>
-    <a href="#contact">Thông tin</a>
-  </nav>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="image.png" alt="BKMindCare" class="logo-img">
+                <span>BKMindCare</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#features" class="btn btn-primary" style="color: white;">Tính năng</a></li>
+                    <li><a href="#how-it-works" class="btn btn-primary" style="color: white;">Cách hoạt động</a></li>
+                    <li><a href="#testimonials" class="btn btn-primary" style="color: white;">Đánh giá</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="color: white;">Liên hệ</a></li>
+                    <!-- <li><a href="#" class="btn btn-primary" style="color: white;">Đăng nhập</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<section class="hero">
-  <div>
-    <h1>Bạn không một mình — Chúng tôi lắng nghe bạn.</h1>
-    <p>BKMindCare là nền tảng hỗ trợ tâm lý <b>dành riêng cho sinh viên Đại học Bách Khoa TP.HCM</b>, giúp bạn chia sẻ cảm xúc, tìm chuyên gia phù hợp và đồng hành trên hành trình chữa lành.</p>
-    <a class="cta" href="#features">Khám phá ngay</a>
-    <a class="secondary" href="#mvp">Tại sao chọn chúng tôi?</a>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate-fadeInUp">
+                    <h1>Bạn không một mình — Chúng tôi lắng nghe bạn</h1>
+                    <p>BKMindCare là nền tảng hỗ trợ tâm lý <strong>dành riêng cho sinh viên Đại học Bách Khoa TP.HCM</strong>, giúp bạn chia sẻ cảm xúc, tìm chuyên gia phù hợp và đồng hành trên hành trình chữa lành.</p>
+                    <div class="hero-buttons">
+                        <a href="#features" class="btn btn-primary">Khám phá ngay</a>
+                        <a href="#how-it-works" class="btn btn-secondary">Tìm hiểu thêm</a>
+                    </div>
+                </div>
+                <div class="hero-image animate-fadeInUp delay-100">
+                    <img src="https://img.freepik.com/free-vector/online-psychotherapy-concept-illustration_114360-8385.jpg" alt="Hỗ trợ tâm lý trực tuyến">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="features" class="section">
-  <h2>Tính năng cốt lõi</h2>
-  <div class="grid-3">
-    <div class="feature-card">
-      <strong>💬 Chat ẩn danh với chuyên gia</strong>
-      <p>Trò chuyện kín đáo, không phán xét — an toàn để mở lòng.</p>
-    </div>
-    <div class="feature-card">
-      <strong>🗓️ Đặt lịch tư vấn</strong>
-      <p>Chọn chuyên gia phù hợp và đặt lịch video hoặc gặp trực tiếp.</p>
-    </div>
-    <div class="feature-card">
-      <strong>📆 Check-in cảm xúc mỗi ngày</strong>
-      <p>Ghi lại cảm xúc, theo dõi quá trình và nhận gợi ý chăm sóc tâm lý.</p>
-    </div>
-  </div>
-</section>
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tính năng nổi bật</h2>
+                <p>Những tính năng đặc biệt giúp bạn chăm sóc sức khỏe tinh thần một cách toàn diện</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>Chat ẩn danh</h3>
+                    <p>Trò chuyện kín đáo với chuyên gia tâm lý mà không cần tiết lộ danh tính.</p>
+                    <a href="#" class="feature-link">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Đặt lịch tư vấn</h3>
+                    <p>Dễ dàng đặt lịch hẹn trực tiếp hoặc trực tuyến với chuyên gia phù hợp.</p>
+                    <a href="#" class="feature-link">Đặt lịch ngay <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Theo dõi cảm xúc</h3>
+                    <p>Nhật ký tâm trạng và biểu đồ cảm xúc giúp bạn hiểu rõ hơn về bản thân.</p>
+                    <a href="#" class="feature-link">Khám phá <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Cộng đồng hỗ trợ</h3>
+                    <p>Kết nối với những người có cùng trải nghiệm để cùng nhau vượt qua khó khăn.</p>
+                    <a href="#" class="feature-link">Tham gia ngay <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Tài nguyên học tập</h3>
+                    <p>Kho tài liệu phong phú về sức khỏe tâm thần và kỹ năng sống.</p>
+                    <a href="#" class="feature-link">Khám phá <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Nhắc nhở chăm sóc bản thân</h3>
+                    <p>Hệ thống nhắc nhở giúp bạn duy trì thói quen chăm sóc sức khỏe tinh thần.</p>
+                    <a href="#" class="feature-link">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  © 2025 BKMindCare — Sinh viên Bách Khoa đồng hành cùng nhau.
-</footer>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bắt đầu chỉ với 3 bước đơn giản</h2>
+                <p>Hãy cùng trải nghiệm dịch vụ chăm sóc sức khỏe tinh thần dễ dàng và thuận tiện</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Đăng ký tài khoản</h3>
+                        <p>Tạo tài khoản nhanh chóng bằng email sinh viên Bách Khoa để trải nghiệm đầy đủ tính năng.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Làm bài đánh giá ban đầu</h3>
+                        <p>Hoàn thành bảng câu hỏi ngắn để chúng tôi hiểu rõ hơn về tình trạng của bạn.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Kết nối với chuyên gia</h3>
+                        <p>Bắt đầu trò chuyện với chuyên gia tâm lý phù hợp nhất với nhu cầu của bạn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cảm nhận từ người dùng</h2>
+                <p>Hàng ngàn sinh viên Bách Khoa đã tìm thấy sự giúp đỡ từ BKMindCare</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+        "Là sinh viên năm cuối với đồ án tốt nghiệp và áp lực việc làm, mình đã tìm thấy sự bình yên khi được tâm sự với các chuyên gia tâm lý của BKMindCare. Cảm ơn đội ngũ đã giúp mình vượt qua giai đoạn khó khăn này!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Huỳnh Ngọc Trúc Lu">
+                        </div>
+                        <div class="author-info">
+                            <h4>Huỳnh Ngọc Trúc Lu</h4>
+                            <p>Sinh viên năm 8 ngành khoa học máy tính đang intern và bị đuổi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+        "Là tân sinh viên xa nhà, mình đã rất bỡ ngỡ và cô đơn. Tính năng nhật ký cảm xúc và các buổi tư vấn trực tuyến đã giúp mình thích nghi tốt hơn với môi trường mới. Đặc biệt là trong kỳ học đầu tiên đầy thử thách!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Huỳnh Thị Trúc Lu">
+                        </div>
+                        <div class="author-info">
+                            <h4>Huỳnh Thị Trúc Lu</h4>
+                            <p>Sinh viên năm 5 đăng học môn mobile app và chưa đi học buổi nào</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+        "Với lịch học dày đặc và deadline cận kề, mình đã từng rơi vào trạng thái kiệt sức. Nhờ BKMindCare, mình học được cách cân bằng giữa học tập và chăm sóc bản thân. Đặc biệt là trong kỳ học này khi phải đối mặt với nhiều môn học chuyên ngành khó nhằn!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Nguyễn Trần Lu Lu">
+                        </div>
+                        <div class="author-info">
+                            <h4>Nguyễn Trần Lu Lu</h4>
+                            <p>Sinh viên khoa học máy tính năm 9 với 2 cảnh cáo học vụ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="container">
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Bạn đang gặp khó khăn về tâm lý?</h2>
+                <p>Đừng ngần ngại tìm kiếm sự giúp đỡ. Hàng ngàn sinh viên Bách Khoa đã tìm thấy sự hỗ trợ từ BKMindCare.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-cta">Bắt đầu ngay</a>
+                    <a href="#" class="btn-cta btn-cta-outline">Tìm hiểu thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <img src="image.png" alt="BKMindCare">
+                        <span>BKMindCare</span>
+                    </a>
+                    <p>Nền tảng hỗ trợ tâm lý dành riêng cho sinh viên Đại học Bách Khoa TP.HCM, giúp bạn chăm sóc sức khỏe tinh thần một cách toàn diện.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Trang chủ</a></li>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Tính năng</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> Cách hoạt động</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Đánh giá</a></li>
+                        <!-- <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li> -->
+                    </ul>
+                </div>
+                <!-- <div class="footer-links">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tư vấn tâm lý</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kiểm tra sức khỏe tâm thần</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tài liệu tự học</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sự kiện cộng đồng</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hỏi đáp chuyên gia</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer-contact">
+                    <h3>Liên hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 268 Lý Thường Kiệt, Phường 14, Quận 10, TP.HCM</p>
+                    <p><i class="fas fa-phone-alt"></i> +84 28 3865 4242</p>
+                    <p><i class="fas fa-envelope"></i> support@bkmindcare.edu.vn</p>
+                    <p><i class="fas fa-clock"></i> Thứ 2 - Thứ 6: 8:00 - 20:00<br>Thứ 7: 8:00 - 17:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BKMindCare. Tất cả các quyền thuộc về team manifest.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTop" class="back-to-top" title="Lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : 
+                '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fadeInUp');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Add animation classes to elements
+            document.querySelectorAll('.feature-card, .step, .testimonial-card').forEach((el, index) => {
+                el.classList.add('animate-fadeInUp');
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                
+                // Add delay based on element position
+                const delay = (index % 3) * 0.1;
+                el.style.transitionDelay = `${delay}s`;
+            });
+            
+            // Run initial check
+            animateOnScroll();
+        });
+
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
 </body>
 </html>
